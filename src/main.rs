@@ -1,12 +1,11 @@
-use diesel::pg::PgConnection;
-use diesel::prelude::*;
-use std::env;
+use actix_web::{HttpResponse, HttpServer, App, web};
 
-pub fn establish_connection() -> PgConnection {
-    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL must be set");
-    PgConnection::establish(&database_url).expect(&format!("Error connecting to {}", database_url))
-}
-
-fn main() {
-    println!("Hello, world!");
+#[actix_web::main]
+async fn main() -> std::io::Result<()> {
+    HttpServer::new(|| {
+        App::new().route("/", web::get().to(HttpResponse::Ok))
+    })
+    .bind(("0.0.0.0", 8080))?
+    .run()
+    .await
 }
