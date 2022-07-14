@@ -1,5 +1,0 @@
-FROM scratch
-
-COPY ./target/aarch64-unknown-linux-musl/release/keyswit-ch /
-
-CMD [ "/keyswit-ch" ]
