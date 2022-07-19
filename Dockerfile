@@ -69,4 +69,4 @@ COPY --from=build /src/target/keyswit-ch /usr/bin/keyswit-ch
 
 EXPOSE 8080
 
-RUN /usr/bin/keyswit-ch
+CMD [ "/usr/bin/keyswit-ch" ]
