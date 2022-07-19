@@ -19,18 +19,22 @@ RUN apt -y update
 RUN case $TARGETARCH in \
         amd64) \
             apt -y install \
+                crossbuild-essential-amd64 \
                 gcc-10-multilib-x86-64-linux-gnu \
                 libc6-dev-i386-amd64-cross \
                 libpq-dev:amd64 \
-                libpq5:amd64; \
+                libpq5:amd64 \
+                libzstd-dev:amd64; \
             rustup target add x86_64-unknown-linux-gnu; \
             ;; \
         arm64) \
             apt -y install \
+                crossbuild-essential-arm64 \
                 gcc-10-aarch64-linux-gnu \
                 libc6-dev-arm64-cross \
                 libpq-dev:arm64 \
-                libpq5:arm64; \
+                libpq5:arm64 \
+                libzstd-dev:arm64; \
             rustup target add aarch64-unknown-linux-gnu; \
             ;; \
         *) \
